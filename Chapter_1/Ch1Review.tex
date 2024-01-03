@@ -1,0 +1,588 @@
+\documentclass[11pt]{article}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./Figures/}{#1.pdf_tex}
+}
+\newcommand{\incsvg}[2]{%
+    \def\svgwidth{\columnwidth}
+    \graphicspath{{#1}}
+    \input{#2.pdf_tex}
+}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{multirow,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath}
+\newlength{\tabcont}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+\usepackage{graphicx}
+\usepackage{empheq}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\colorlet{shadecolor}{orange!15}
+\parindent 0in
+\parskip 12pt
+\geometry{margin=1in, headsep=0.25in}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\theoremstyle{remark}
+\newtheorem{theorem}{Theorem}
+\newtheorem{exer}{Ex.}
+\newtheorem{note}{Note}
+\begin{document}
+\setcounter{section}{0}
+\title{Chapter 1 Notes}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE \bf How to Prove It Chapter 1 Review}\\
+{\large Intro to Abstract Math}\\
+\end{center}
+\tableofcontents
+\section{Sentential Logic}
+\subsection{Deductive Reasoning and Logical Connectives}
+\subsubsection{Premises and Conclusions}
+In an argument, there are two main parts. The \textbf{premises}, and the \textbf{conclusion}.
+\begin{center}
+\begin{tabular}{ c | c }
+    P & It will either rain or snow tomorrow.\\
+    P & It's too warm for snow\\
+    C & Therefore, it will rain
+\end{tabular}
+\end{center}
+We arrive at a conclusion from the assumption that the premises are true.
+
+
+There's a possibility there will be nice weather tomorrow, so the conclusion may appear to be false. However, this would mean that at least one of the premises is also false (Premise 1).
+
+
+\textit{Although there is no guarantee the conclusion is true, it can only be false if at least one of the premises is also false.}
+\begin{shaded}
+An argument is valid if the premises cannot all be true without the conclusion being true as well
+\end{shaded}
+\begin{center}
+\begin{tabular}{ c | c }
+    P & Either the butler is guilty or the maid is guilty.\\
+    P & Either the maid is guilty or the cook is guilty\\
+    C & Therefore, either the butler is guilty or the cook is guilty
+\end{tabular}
+\end{center}
+This argument is invalid because the conclusion could be false even if both premises are true (maid is guilty but butler and cook are innocent).
+
+\subsubsection{Argument/Logical Form and Logical Connectives}
+The previous example has the following argument form:
+\begin{center}
+P \textbf{or} Q.\\ \textbf{Not} Q.\\Therefore, P.
+\end{center}
+This is a valid argument form. \newline
+\textbf{Or} and \textbf{Not} are key words which help determine if the reasoning of an argument is valid.
+
+\textbf{Or}, \textbf{And}, and \textbf{Not} are called \textbf{Logical Connectives} which have special symbols associated with them.
+
+
+\begin{center}
+\begin{tabular}{ c | c | c }
+    $\lor$ & or & P $\lor$ Q - Disjunction of P and Q.\\
+    $\land$ & and & P $\land$ Q - Conjunction of P and Q\\
+    $\neg$ & not & $\neg$ P - Negative of P
+\end{tabular}
+\end{center}
+$\land$ and $\lor$ can only be used \textit{between two statements} and $\neg$ can only be used before a statement to negate it.
+
+\begin{exer}
+    Analyze the logical form of this statement \\
+    \textit{Either Bill is at work and Jane isn't, or Jane is at work and Bill isn't}\\ \\
+    Let B stand for the statement "Bill is at work" and J for the statement "Jane is at work". 
+    Then the first half of the statement "Bill is at work and Jane isn't" can be represented as
+    B $\land$ $\neg$ J, and the second half of the statement "Jane is at work and Bill isn't" can be represented as J $\land$ $\neg$ B.
+    Combine these statements with the logical or (B $\land$ $\neg$ J) $\lor$ (J $\land$ $\neg$ B). 
+\end{exer}S
+\subsection{Truth Tables}
+\subsubsection{Truth Values and Tables}
+A statement is either \textbf{true} or \textbf{false}. This is called the statement's \textbf{truth value}.
+\begin{shaded}
+\textbf{And} contributes to the truth value by requiring both statements to be true for the whole statement to be true. \\
+\textbf{Or} contributes by requiring at least one of the statements to be true (inclusive). \\
+\textbf{Negate} contributes by requiring the opposite of the statement to be true.
+\end{shaded}
+Assuming P and Q can only be either true or false, we can summarize all possible truth values of a statement using a \textbf{truth table}. The first two columns
+of a truth table always lay out all possible combinations of a logical formula. The remaining columns
+are used for the premises and conclusion.
+
+\begin{center}
+\begin{tabular}{ c  c | c | c | c }
+    P & Q & P $\land$ Q & P $\lor$ Q & $\neg$ P \\
+    \hline
+    F & F & F & F & T \\
+    F & T & F & T & T \\
+    T & F & F & T & F \\
+    T & T & T & T & F
+\end{tabular}
+\end{center}
+
+Another kind of "or" exists which is the "exclusive or". This means either P is true or Q is true, but not both. In logical form, (P $\lor$ Q) $\land$ $\neg$ (P $\land$ Q)
+
+To make a truth table for any logical statement, go step by step.
+\begin{exer}
+\textit{Make the truth table for} $\neg$ (P $\lor$ $\neg$ Q)
+\begin{center}
+\begin{tabular}{ c  c | c | c | c }
+    P & Q & $\neg$ Q & P $\lor$ $\neg$ Q & $\neg$ (P $\lor$ $\neg$ Q) \\
+    \hline
+    F & F & T & T & F \\
+    F & T & F & F & T \\
+    T & F & T & T & F \\
+    T & T & F & T & F
+\end{tabular}
+\end{center}
+\end{exer}
+In general, if a formula has n different letters, there will be $2^n$ rows in the truth table.
+This means it will be inefficient to write truth tables for statements with many letters.
+
+\subsubsection{Argument Validity}
+One way to determine the validity of an argument is to make the truth table of the argument.
+If a line exists where the premises are true and the conclusion is false, the argument is invalid.
+\begin{center}
+\begin{tabular}{ c | c  }
+    It will either rain or snow tomorrow & R $\lor$ S \\
+    It's too warm for snow & $\neg$ S \\
+    \hline
+    Therefore, it will rain & $\therefore$ R
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{ c  c | c  c | c} 
+    R & S & R $\lor$ S & $\neg$ S & P \\
+    \hline
+    F & F & F & T & F \\ 
+    F & T & T & F & F \\ 
+    T & F & T & T & T \\ 
+    T & T & T & F & T \\
+    & & \multicolumn{2}{c}{Premises}& Conclusion
+    \end{tabular}
+\end{center}
+The only line where both premises are true is line 3, and the conclusion is also true. Therefore the argument is valid.
+\begin{center}
+\begin{tabular}{ c | c  }
+    Either John isn't smart and he is lucky, or he's smart & ($\neg$ S $\land$ L) $\lor$ S\\
+    John is smart & S \\
+    \hline
+    Therefore, John isn't lucky & $\therefore$ $\neg$ L
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{ c  c | c  c | c} 
+    S & L & ($\neg$ S $\land$ L) $\lor$ S & S & $\neg$ L \\
+    \hline
+    F & F & F & F & T \\ 
+    F & T & T & F & F \\ 
+    T & F & T & T & T \\ 
+    T & T & T & T & F \\
+    & & \multicolumn{2}{c}{Premises}& Conclusion
+\end{tabular}
+\end{center}
+In lines 3 and 4, both premises are true, but in line 4 the conclusion is false, therefore the argument is invalid.
+\subsubsection{Logical Equivalence}
+Notice ($\neg$ S $\land$ L) $\lor$ S and R $\lor$ S have the same truth table for their respective columns. Also notice both of these statements have the same truth table as P $\lor$ Q.
+No matter what the letters/statements stand for, if they can only be true or false, they are logically equivalent.
+\begin{center}
+($\neg$S $\land$ L) $\lor$ S = R $\lor$ S = P $\lor$ Q
+\end{center}
+
+Like algebra, logical statements can be written in equivalent forms following these rules:
+\begin{shaded}
+\textbf{De Morgan's Laws}\newline
+$\neg$ (P $\land$ Q) = $\neg$ P $\lor$ $\neg$ Q\\
+$\neg$ (P $\lor$ Q) = $\neg$ P $\land$ $\neg$ Q \\
+\textbf{Commutative Laws} \newline
+P $\land$ Q = Q $\land$ P \\
+P $\lor$ Q = Q $\lor$ P\\
+\textbf{Associative Laws} \newline
+P $\land$ (Q $\land$ R) = (P $\land$ Q) $\land$ R\\
+P $\lor$ (Q $\lor$ R) = (P $\lor$ Q) $\lor$ R \\
+\textbf{Idempotent Laws} \newline
+P $\land$ P = P \\
+P $\lor$ P = P \\
+\textbf{Distributive Laws} \newline
+P $\land$ (Q $\lor$ R) = (P $\land$ Q) $\lor$ (P $\land$ R) \\
+P $\lor$ (Q $\land$ R) = (P $\lor$ Q) $\land$ (P $\lor$ R)\\
+\textbf{Absorption Law} \newline
+P $\lor$ (P $\land$ Q) = P \\
+P $\land$ (P $\lor$ Q) = P \\
+\textbf{Double Negation Law} \newline
+$\neg$ $\neg$ P = P \\
+\textbf{Tautology Laws (Tautology = Always True)} \newline
+P $\land$ (tautology) = P \\
+P $\lor$ (tautology) = tautology \\
+$\neg$ (tautology) = contradiction \\
+\textbf{Contradiction Laws (Contradiction = Always False)} \newline
+P $\land$ (contradiction) = contradiction \\
+P $\lor$ (contradiction) = P \\
+$\neg$ (contradiction) = tautology
+\end{shaded}
+
+\newpage
+\begin{exer}
+\textit{Find a simpler formula for the following formula:} $\neg$ (P $\lor$ (Q $\land$ $\neg$ R)) $\land$ Q.
+\newline
+\begin{align*}
+\neg (P \lor (Q \land \neg R)) \land Q & = (\neg P \land \neg (Q \land \neg R)) \land Q & \text{(De Morgan's law)} \\
+& = (\neg P \land (\neg Q \lor \neg \neg R)) \land Q & \text{(De Morgan's Law)}\\
+& = (\neg P \land (\neg Q \lor R)) \land Q & \text{(double negation law)} \\
+& = \neg P \land ((\neg Q \lor R) \land Q) & \text{(associative law)} \\
+& = \neg P \land (Q \land (\neg Q \lor R)) & \text{(commutative law)} \\
+& = \neg P \land ((Q \land \neg Q) \lor (Q \land R)) & \text{(distributive law)} \\
+& = \neg P \land (Q \land R) & \text{(contradiction law)} \\
+& = \neg P \land Q \land R & \text{(associative law)}
+\end{align*}
+\end{exer} 
+
+
+\subsection{Variables and Sets}
+\subsubsection{Statements with Variables}
+Often in mathematical reasoning it is necessary to make statements about objects that are represented by variables.
+
+
+A "P" by itself stands for a statement, where \textbf{P(x)} stresses that the statement is about x.
+
+
+\textit{P is divisible by q} - This statement can be represented by \textbf{D(P, q)}, where \textbf{D(P, q)} means "P is divisible by q"
+
+
+Variables can stand for anything, not just numbers. A statement may contain several variables that stand for different kinds of objects
+
+\textit{x has y children} - x stands for a person, y stands for a number
+
+Statements involving variables can be connected using logical connectives just like statements without variables.
+
+\textit{x is a prime number, and either y or z is divisible by x} \\
+P(x) = "x is a prime number", D(y,x) = "y is divisible by x", D(z,x) = "z is divisible by x" \\
+P(x) $\land$ (D(y,x) $\lor$ D(z,x))
+
+\subsubsection{Sets and Truth Sets}
+
+Assigning a truth value to a statement with variables is problematic because the validity of the statement depends on the value of the variable. This is where \textbf{truth sets} are used.
+\begin{shaded}
+\begin{defn}
+\textbf{Set} - A collection of objects where the objects in the set are called \textbf{elements of the set}. If \textit{A} is the set \{3,7,14\}, then 7 $\in$ A means 7 is an element of A. 11 $\notin$ A means 11 is not an element of A.
+\end{defn}
+\end{shaded}
+A set is completely determined once its elements have been specified, so two sets with the same elements are always equal. \\
+\{3,7,14\} = \{14,3,7\} = \{3,7,14,7\}
+
+For sets with a large amount of elements, you can use (...)\\
+\textit{B = \{2,3,5,7,11,13,17,...\}}, although this notation may leave the pattern ambiguous 
+
+Instead, explicitly state the pattern of the set.\\
+\textit{B = \{x $|$ \underline{x is a prime number} \}} - "B is equal to the set of all x such that x is a prime number".
+
+\underline{Elementhood test for the set}. Any value of x that makes this statement true passes the test and is an element of the set. Anything else is not in the set.
+\begin{exer}
+\textit{Determine if 5 is in the set: } \{ x $|$ $x^2 < 9$ \}
+
+25 is not less than 9, therefore 5 is not in the set.
+\end{exer}
+
+Another way to state the previous example is "Determine if 5 $\in$ \{ x $|$ $x^2 <9$ \}".\newline
+Generally, to determine if any value y is in the set,  y $\in$ \{ x $|$ $x^2 < 9$\}, is the same as checking if $y^2 < 9$. \\
+Since we need to know the value of y in this statement but not x, y is a \textbf{free variable} and x is a \textbf{bound variable/dummy variable}.\\
+x here is just used to represent the set that y will be evaluated in.
+\begin{shaded}
+\textbf{Free Variable} - An object/variable that a statement says something about. Changing the value of this variable affects the truth value of the statement.\\
+\textbf{Bound Variable} - A letter used for convenience to express an idea, doesn't stand for any particular object.
+\end{shaded}
+
+x becomes bound only when the statement in the elementhood test notation is evaluated. The notation \{ x $|$ ... \} binds the variable x.
+
+In general, the statement \textit{y $\in$ \{ x $|$ P(x) \}} means the same as \textbf{P(y)}, which is a statement about y, not x.
+Therefore, y $\notin$ \{ x $|$ P(x) \} is the same as $\neg$ P(y).\\
+The expression \{ x $|$ P(x) \} is \textbf{not} a statement, but the name of a set.
+\begin{exer}
+2 $\in$ \{ w $|$ 6 $\notin$ \{ x $|$ x is divisible by w \} \} - Inner statement means "6 is not divisible by w". Substitute this into the new statement,\\
+2 $\in$ \{ w $|$ 6 is not divisible by w \} - This means "6 is not divisible by 2". The statement has no more free variables, so the truth value of the statement doesn't depend on the variables,
+and since 6 is divisible by 2, the statement is false.
+\end{exer}
+
+\begin{shaded}
+\begin{defn}
+The \textbf{Truth Set} of a statement P(x) is the set of all values of x that make the statement P(x) true. In other words,
+it is the set defined by using the statement P(x) as the elementhood test: \{ x $|$ P(x) \}. 
+\end{defn}
+\end{shaded}
+
+"n is an even prime number" - The only number that satisfies this statement is 2, so the truth set is \{ 2 \}.
+\begin{note}
+2 and \{ 2 \} are not the same thing. 2 is a number and \{ 2 \} is the set where 2 is the only element. 2 $\in$ \{ 2 \}
+but 2 $\neq$ \{ 2 \}.
+\end{note}
+
+Suppose A is the truth set of a statement P(x). This means A = \{ x $|$ P(x) \}. Since for any object y, the statement y $\in$ \{ x $|$ P(x) \}
+means the same as P(y), it follows y $\in$ A means the same thing as P(y).
+In general, if A is the truth set of P(x), then to say y $\in$ A means the same as P(y).
+
+\subsubsection{Universe of Discourse}
+When a statement contains variables, it is often clear from context what particular objects the variables stand for.
+The set of all objects of this kind (the set of all possible values for the variables) is the \textbf{Universe of Discourse} for the statement, and
+we say that the variables range over this universe.
+
+\begin{shaded}
+\textbf{General Universes of Discourse}\\
+$\mathbb{R}$ = \{ x $|$ x is a real number \} - $\mathbb{R}^+$, $\mathbb{R}^-$\\ 
+$\mathbb{Q}$ = \{ x $|$ x is a rational number \} - $\mathbb{Q}^+$, $\mathbb{Q}^-$\\
+$\mathbb{Z}$ = \{ x $|$ x is an integer \} - $\mathbb{Z}^+$, $\mathbb{Z}^-$\\
+$\mathbb{N}$ = \{ x $|$ x is a natural number \}
+\end{shaded}
+If the universe of discourse U for a statement is ambiguous, or you want to direct attention to a
+universe, explicity state it \{ x $\in$ U $|$ P(x) \} - "The set of all x in U such that P(x)".
+
+y $\in$ \{ x $\in$ $\mathbb{R}^+$ $|$ $x^2 < 9$ \} means the same as y $\in$ $\mathbb{R}^+$ $\land$ $y^2 < 9$. In general, \\
+y $\in$ \{ x $\in$ A $|$ P(x) \} = y $\in$ A $\land$ P(y)
+
+Suppose P(x) is a statement containing a free variable x that ranges over a universe U. If P(x)
+is true for every value of x in U, then the truth set of P(x) will be the whole universe U.\\
+$x^2 \geq 0$ is true for every real number x, therefore the truth set is \{ x $\in$ $\mathbb{R}$ $|$ $x^2 \geq 0 \} = \mathbb{R}$
+
+For a statement P(x) that is false for every possible value of x, the truth set has no elements\\
+\{ x $\in$ $\mathbb{Z}$ $|$ x $\neq$ x \} = $\varnothing$
+
+\subsection{Operations on Sets}
+\subsubsection{Intersection, Union, and Difference}
+\begin{shaded}
+The \textbf{Intersection} of two sets A and B is the set A $\cap$ B defined by:\\
+A $\cap$ B = \{ x $|$ x $\in$ A and x $\in$ B \} \\
+The \textbf{Union} of A and B is the set A $\cup$ B defined by:\\
+A $\cup$ B = \{ x $|$ x $\in$ A or x $\in$ B \}\\
+The \textbf{Difference} of A and B is the set A $\backslash$ B defined by:\\
+A $\backslash$ B = \{ x $|$ x $\in$ A and x $\notin$ B \}
+\end{shaded}
+\begin{exer}
+\textit{Suppose A = \{ 1,2,3,4,5 \} and B = \{ 2,4,6,8,10 \}}\\ \\
+A $\cap$ B = \{ 2,4 \} \qquad A $\cup$ B = \{ 1,2,3,4,5,6,8,10 \} \qquad A $\backslash$ B = \{ 1,3,5 \}\\
+(A $\cup$ B) $\backslash$ (A $\cap$ B) = \{ 1,3,5,6,8,10 \} \qquad (A $\backslash$ B) $\cup$ (B $\backslash$ A) = \{ 1,3,5,6,8,10 \}
+\end{exer}
+
+
+\begin{figure}[ht!]
+	\centering
+    \caption{Venn Diagrams}
+	%\incsvg{path/}{path/file}
+	\incsvg{images}{images/venn}\\
+	\label{VennDiagrams}
+\end{figure}
+\begin{center}
+Venn Diagrams are useful to visualize these set operations
+\end{center}
+\newpage
+\subsubsection{Set Operations and Logical Connectives}
+
+If A is the truth set of a statement P(x) and B is the truth set of Q(x), x $\in$ A means the same as
+P(x), x $\in$ B means the same as Q(x), and the truth set of P(x) $\land$ Q(x) is \{ x $|$ P(x) $\land$ Q(x) \} =\\
+\{ x $|$ x $\in$ A $\land$ x $\in$ B \} = A $\cap$ B   
+
+Through similar reasoning, P(x) $\lor$ Q(x) = A $\cup$ B
+
+The truth set of $\neg$P(x) will consist of the elements of the universe for which P(x) is false.
+The truth set of $\neg$P(x) is U $\backslash$ A.
+
+\begin{shaded}
+    Let A be the truth set for P(x) and B for Q(x),\newline
+    A $\cap$ B = P(x) $\land$ Q(x)\newline
+    A $\cup$ B = P(x) $\lor$ Q(x)\newline
+    A$\backslash$B = P(x) $\land$ $\neg$Q(x)
+\end{shaded}
+
+Similar to how logical connectives can only be used to combine statements, set theory operations
+are used to combine sets.
+
+If A is the truth set of P(x) and B is the truth set of Q(x), we can say A $\cap$ B is the truth set
+of P(x) $\land$ Q(x).
+
+\begin{note}
+    A $\land$ B, or P(x) $\cap$ Q(x) are meaningless since logical connectives can only be used to combine statements
+    and set operations only for sets
+\end{note}
+
+Logical connective equivalences can be used with sets as well as truth tables.
+
+\begin{exer} \textit{Rewrite x $\in$ A$\backslash$(B $\cap$ C)} \newline 
+\begin{align*}
+    x \in A \backslash (B \cap C) &=x \in A \land \neg(x \in B \cap C) &\text{Definition of $\backslash$  }\\
+    &=x \in A \land \neg(x \in B \land x \in C) &\text{Definition of $\cap$ }\\
+    &=x \in A \land (x \notin B \lor x \notin C) & \text{De Morgan's Law}\\
+    &=(x \in A \land x \notin B) \lor (x \in A \land x \notin C) &\text{Distributive Law}\\
+    &=(x \in A\backslash B) \lor (x \in A\backslash C) &\text{Definition of $\backslash$ }\\
+    &=x \in (A \backslash B) \cup (A \backslash C) &\text{Definition of $\cup$ }
+\end{align*}
+\end{exer} 
+
+\begin{exer}
+    \textit{Check} (A $\cup$ B)$\backslash$(A $\cap$ B) = (A$\backslash$B) $\cup$ (B$\backslash$A)  \newline
+    Let P = x $\in$ A and Q = x $\in$ B, check the truth tables for the formulas\newline
+    (P $\lor$ Q) $\land$ $\neg$(P $\land$ Q) and (P $\land$ $\neg$Q) $\lor$ (Q $\land$ $\neg$P)
+    \begin{center}
+    \begin{tabular}{c c|c|c}
+            
+                P & Q & (P $\lor$ Q) $\land$ $\neg$(P $\land$ Q) &  (P $\land$ $\neg$Q) $\lor$ (Q $\land$ $\neg$P) \\
+            \hline
+                F & F & F & F  \\
+                F & T & T & T  \\
+                T & F & T & T  \\
+                T & T & F & F  \\
+            
+    \end{tabular}
+    \end{center}
+    The truth tables are equivalent, therefore the formulas are equivalent
+\end{exer}
+\newpage
+\subsubsection{Subsets and Disjoint Sets}
+
+
+\begin{figure}[ht!]
+	\centering
+	\caption{Subset and Disjoint}
+	%\incsvg{path/}{path/file}
+	\incsvg{images}{images/vennsubset}\\
+	\label{fig:vennsubset}
+\end{figure}
+\begin{shaded}
+    Suppose A and B are sets. We say A is a \underline{subset} of B if every element of A is also an element of B
+    We write A $\subset$ B to mean that A is a subset of B (specifically A has fewer elements than B, also known as proper subset).
+    A $\subseteq$ B means A has fewer or all elements of B.\newline
+    A and B are said to be \underline{disjoint} if they have no elements
+    in common. This is the same as saying the set of elements they have in common is the empty set, A $\cap$ B = $\varnothing$    
+\end{shaded}
+
+Sometimes it's possible to show certain sets are always disjoint or one set is always a subset of another.
+
+x $\in$ (A $\cap$ B) $\cap$ (A $\backslash$B) $\longrightarrow$ (x $\in$ A $\land$ x $\in$ B) $\land$ (x $\in$ A $\land$ x $\notin$ B) $\longrightarrow$ 
+x $\in$ A $\land$ $\underline{(x \in B \land x \notin B)}$ \underline{This is a contradiction, therefore this equation is
+always disjoint}   
+\\
+
+\begin{theorem}
+    For any sets A and B, (A $\cup$ B)$\backslash$B $\subseteq$ A.  
+\end{theorem}
+\begin{proof}
+    \underline{Show if something is an element of (A $\cup$ B)$\backslash$B, then it must also be an element of A.} \newline \newline
+    Suppose that x $\in$ (A $\cup$ B)$\backslash$B. This means that x $\in$ A $\cup$ B and x $\notin$ B, or x $\in$ A $\lor$ x $\in$ B and x $\notin$ B.
+    This statement has the logical form P $\lor$ Q and $\neg$Q. From these premises, we can conclude x $\in$ A must be true.
+    Thus, anything that is an element of (A $\cup$ B)$\backslash$B must also be an element of A, so (A $\cup$ B)$\backslash$B $\subseteq$ A.
+\end{proof}
+
+\begin{note}
+    This does not mean that (A $\cup$ B)$\backslash$B = A. If A is a subset of B, then the resulting set is $\varnothing$.
+    If B is a subset of A, then the resulting set is A$\backslash$B.
+\end{note}
+
+\subsection{The Conditional and Biconditional Connectives}
+\begin{shaded}
+\textbf{Conditional Statement} \newline
+P $\implies$ Q - "If P, then Q" - If P is true, then Q must also be true.
+\end{shaded}
+
+\begin{center}
+\begin{tabular}{c|c}
+                If today is Sunday, then I don't have to go to work today. &  P $\implies$ Q \\
+                Today is Sunday. &  P \\
+                \hline
+                Therefore, I don't have to go to work today. & $\therefore$ Q  \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+    P = "Today is Sunday" Q = "I don't have to go to work today"
+\end{center}
+
+\textit{If it's raining and I don't have my umbrella, then I'll get wet.} \newline
+R = "It's raining", U = "I have my umbrella", W = "I'll get wet" \newline
+(R $\land$ $\neg$U) $\implies$ W
+
+The statement P $\implies$ Q means if P is true, then Q must also be true. If there's a situation where P is true
+but Q is false, then the conditional statement is false.
+
+"If $x>2$, then $x^2 > 4$." This stands for P(x) $\implies$ Q(x). Both statements may have a free variable x so each
+statement's validity depends on the value of x. But no matter what value x is, \textbf{if} x is greater than 2, then
+$x^2$ must then be greater than 4 as well, so the conditional statement P(x) $\implies$ Q(x) should be true. Therefore
+the truth table should be completed in a way so no matter the value of x, the conditional statement is true.
+
+If x = 3, then both P(x) and Q(x) are true.
+
+If x = 1, both P(x) and Q(x) are false, but since P(x) $\implies$ Q(x) should be true for all values of x,
+these conditions should still give a true value. 
+
+If x = -5, P(x) is false but Q(x) is true. P(x) $\implies$ Q(x) does not work the other way around. In these
+conditions, since P(x) is false, this does not imply Q(x) is also false, so this statement is
+vacuosly true. 
+
+\begin{center}
+\begin{tabular}{c c|c}
+            P & Q &  P $\implies$ Q \\
+        \hline
+            F & F &  T \\
+            F & T &  T \\
+            T & F &  F \\
+            T & T &  T \\
+\end{tabular}
+\end{center}
+
+$\neg$P $\lor$ Q has the same truth table, therefore $\neg$P $\lor$ Q is equivalent to P $\implies$ Q. 
+
+"You won't neglect your homework, or you'll fail the course." This grammaticaly has the form
+$\neg$P $\lor$ Q. The implied message is "If you neglect your homework, you will fail" which has the form
+P $\implies$ Q.
+
+\begin{align*}
+    P \implies Q &= \neg P \lor Q &\\
+    &= \neg P \lor \neg \neg Q & \text{Double Negation}\\
+    &= \neg(P \land \neg Q) & \text{De Morgan's Law}
+\end{align*}
+\begin{center}
+    Thus, P $\implies$ Q = $\neg$(P $\land$ $\neg$Q) 
+\end{center}
+
+Since "if $x>2$ then $x^2 > 4$" is true for every value of x, then P(x) $\land$ $\neg$Q(x) is never true, therefore
+$\neg$(P(x) $\land$ $\neg$Q(x)) is always true by negation.
+
+"If it's going to rain, then I'll take my umbrella" This has the form P $\implies$ Q.\newline
+The equivalent $\neg$(P $\land$ $\neg$Q) form is "I won't be caught in the rain without my umbrella".
+
+\begin{shaded}
+    \textbf{Converse}\newline
+    Q $\implies$ P is the converse of P $\implies$ Q. These are not equivalent statements\newline
+    \textbf{Contrapositive}\newline
+    $\neg$Q $\implies$ $\neg$P is the contrapositive of P $\implies$ Q, which both statements are equal.    
+\end{shaded}
+
+"If John cashed the check I wrote, then my bank account is overdrawn" This has the form P $\implies$ Q.\newline
+The contrapositive equivalent is "If my bank account isn't overdrawn, then John hasn't cashed the check I wrote"
+
+\begin{shaded}
+    \textbf{Equivalent form of "If P, then Q"}\newline
+    -P implies Q\newline
+    -Q, if P\newline
+    -P only if Q - "You can run for president only if you are a citizen" This means if you're not a citizen,
+    then you can't run for president, $\neg$C $\implies$ $\neg$P = P $\implies$ C\newline
+    -P is a sufficient condition for Q - This means P is enough for Q to be true.\newline
+    -Q is a necessary condition for P - This means Q \textbf{needs} to happen if P is true. If Q isn't true/didn't happen,
+    then P also isn't true/didn't happen. $\neg$Q $\implies$ $\neg$P = P $\implies$ Q.     
+\end{shaded}
+\end{document}

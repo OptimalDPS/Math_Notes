@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Sentential Logic}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Deductive Reasoning and Logical Connectives}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Premises and Conclusions}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Argument/Logical Form and Logical Connectives}{2}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Truth Tables}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Truth Values and Tables}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Argument Validity}{4}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Logical Equivalence}{5}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Variables and Sets}{6}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Statements with Variables}{6}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Sets and Truth Sets}{6}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Universe of Discourse}{8}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Operations on Sets}{9}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Intersection, Union, and Difference}{9}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Set Operations and Logical Connectives}{10}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Subsets and Disjoint Sets}{11}{subsubsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.5}The Conditional and Biconditional Connectives}{12}{subsection.1.5}%
